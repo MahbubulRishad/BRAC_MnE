@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.lang.reflect.InvocationTargetException;
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Page {
@@ -19,7 +20,9 @@ public abstract class Page {
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(General.WAIT_TIME));
     }
 
-//    public abstract String getPageTitle();
+    public abstract String getPageTitle();
+
+    public abstract String getCurrentUrl();
 
     public abstract WebElement getWebElement(By locator);
 
@@ -39,5 +42,16 @@ public abstract class Page {
         } catch (NoSuchMethodException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public ArrayList<String> tabSwitch(){
+        ArrayList<String> newTabs = null;
+
+        try{
+            newTabs = new ArrayList<String>(driver.getWindowHandles());
+        }catch (Exception e){
+            System.out.println("New Tab not found");
+        }
+        return newTabs;
     }
 }

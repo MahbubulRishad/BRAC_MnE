@@ -12,4 +12,9 @@ public class HomeModuleListPage extends BasePage {
     public boolean hasUserLogo(){
         return getWebElements(By.xpath("//span[@class='relative']")).size() > 0;
     }
+
+    public GroupManagementHomePage clickOnGroupManagementModule() {
+        getWebElement(By.xpath("//div//p[normalize-space() = 'Group Management']")).click();
+        return getInstance(GroupManagementHomePage.class);
+    }
 }

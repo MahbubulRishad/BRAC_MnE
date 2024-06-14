@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BasePage extends Page {
@@ -12,10 +13,15 @@ public class BasePage extends Page {
         super(driver);
     }
 
-//    @Override
-//    public String getPageTitle() {
-//        return driver.getTitle();
-//    }
+    @Override
+    public String getPageTitle() {
+        return driver.getTitle();
+    }
+
+    @Override
+    public String getCurrentUrl(){
+        return driver.getCurrentUrl();
+    }
 
     @Override
     public WebElement getWebElement(By locator) {
@@ -51,4 +57,6 @@ public class BasePage extends Page {
             System.out.println(locator.toString() + "Not found");
         }
     }
+
+
 }
