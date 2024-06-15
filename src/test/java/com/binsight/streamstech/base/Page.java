@@ -10,6 +10,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public abstract class Page {
     WebDriver driver;
@@ -44,15 +45,24 @@ public abstract class Page {
         }
     }
 
-    public ArrayList<String> tabSwitch(){
-        ArrayList<String> newTabs = null;
+    public void tabSwitch(){
+        Set<String> allWindows = null;
+
+        String originalWindow = driver.getWindowHandle();
 
         try{
-            newTabs = new ArrayList<String>(driver.getWindowHandles());
+            allWindows = driver.getWindowHandles();
+
+            // Switch to the new window
+            for (String windowHandle : allWindows) {
+                if (!windowHandle.equals(originalWindow)) {
+                    driver.switchTo().window(windowHandle);
+                    break;
+                }
+            }
         }catch (Exception e){
             System.out.println("New Tab not found");
         }
-        return newTabs;
     }
 
 }
