@@ -9,7 +9,7 @@ public class GroupManagementHomePage extends BasePage {
         super(driver);
     }
 
-    public boolean hasGroupWelcomePageDisplayed(){
+    public boolean hasGroupWelcomePageTitleDisplayed(){
         return getWebElements(By.xpath("//div//div[@class= 'text-7xl font-bold']")).size() > 0;
     }
 

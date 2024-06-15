@@ -31,6 +31,6 @@ public class HomeModuleListTest extends BaseTest {
 //        ArrayList<String> newTab = page.tabSwitch();
 
         Assert.assertEquals(groupManagementHomePage.getCurrentUrl(), General.GROUP_MANAGEMENT_HOME_PAGE);
-        Assert.assertTrue(groupManagementHomePage.hasGroupWelcomePageDisplayed());
+        Assert.assertTrue(groupManagementHomePage.hasGroupWelcomePageTitleDisplayed());
     }
 }
