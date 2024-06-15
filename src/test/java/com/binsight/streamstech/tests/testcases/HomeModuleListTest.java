@@ -13,17 +13,17 @@ import java.util.ArrayList;
 public class HomeModuleListTest extends BaseTest {
 
     @Test
-    public void clickOnGroupManagementModuleAndCheckRedirection() throws InterruptedException {
+    public void clickOnGroupManagementModuleAndCheckRedirection() {
         GroupManagementHomePage groupManagementHomePage = page.getInstance(LoginPage.class)
                 .fillUsername(getUsername())
                 .fillPassword(getPassword())
                 .clickLoginBtn()
                 .clickOnGroupManagementModule();
 
-        Thread.sleep(4000);
+        General.getLoadTime();
 
         // Tab switch
-       page.tabSwitch();  // tab switch function that is created in Page Class
+        page.tabSwitch();  // tab switch function that is created in Page Class
 
 //        driver.switchTo().newWindow(WindowType.TAB);
 //        driver.get(General.GROUP_MANAGEMENT_HOME_PAGE);
