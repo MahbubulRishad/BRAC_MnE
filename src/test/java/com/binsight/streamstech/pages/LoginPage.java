@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class LoginPage extends BasePage {
+    HomeModuleListPage homeModuleListPage = new HomeModuleListPage(driver);
     public LoginPage(WebDriver driver) {
         super(driver);
     }
@@ -25,7 +26,7 @@ public class LoginPage extends BasePage {
         return getInstance(HomeModuleListPage.class);
     }
 
-    public LoginPage clickLoginBtnError(){
+    public LoginPage clickLoginBtnError() {
         getWebElement(By.xpath("//span//span[normalize-space()='Sign in']")).click();
         return this;
     }
@@ -44,8 +45,14 @@ public class LoginPage extends BasePage {
                 getWebElements(By.xpath("//div//div//mat-error[normalize-space() = 'Username is required']")).size() > 0);
     }
 
-    public boolean hasErrorMessageForWrongUsernameOrPassword(){
-        return  getWebElements(By.xpath("//div[@class='fuse-alert-message ng-tns-c48-3']")).size() > 0;
+    public boolean hasErrorMessageForWrongUsernameOrPassword() {
+        return getWebElements(By.xpath("//div[@class='fuse-alert-message ng-tns-c48-3']")).size() > 0;
     }
 
+    public void getLoginAndRedirectionToGroupManagementHomePage(String username, String password){
+        fillUsername(username);
+        fillPassword(password);
+        clickLoginBtn();
+        homeModuleListPage.clickOnGroupManagementModuleAndRedirectedToGroupManagementHomePage();
+    }
 }

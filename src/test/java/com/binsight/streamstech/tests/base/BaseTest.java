@@ -23,6 +23,7 @@ public class BaseTest {
     private final Properties properties;
 
     public Page page;
+//    public BasePage basePage;
 
     public BaseTest() {
         String filePah = System.getProperty("user.dir") + File.separator +"src"+ File.separator +"test"+ File.separator +"resources"+ File.separator +"config.properties";
@@ -66,6 +67,7 @@ public class BaseTest {
         driver.manage().window().maximize();
 
          page = new BasePage(driver);
+//         basePage = new BasePage(driver);
 
     }
 

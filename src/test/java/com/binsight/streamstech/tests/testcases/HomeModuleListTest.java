@@ -20,10 +20,10 @@ public class HomeModuleListTest extends BaseTest {
                 .clickLoginBtn()
                 .clickOnGroupManagementModule();
 
-        General.getLoadTime();
 
         // Tab switch
-        page.tabSwitch();  // tab switch function that is created in Page Class
+        page.tabSwitch();
+        // tab switch function that is created in Page Class
 
 //        driver.switchTo().newWindow(WindowType.TAB);
 //        driver.get(General.GROUP_MANAGEMENT_HOME_PAGE);

@@ -13,10 +13,10 @@ import java.util.List;
 import java.util.Set;
 
 public abstract class Page {
-    WebDriver driver;
+   protected WebDriver driver;
     WebDriverWait wait;
 
-    public Page (WebDriver driver){
+    public Page(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(General.WAIT_TIME));
     }
@@ -31,7 +31,11 @@ public abstract class Page {
 
     public abstract void waitForWebElement(By locator);
 
-    public <T extends BasePage> T getInstance (Class<T> tClass){
+    public abstract void tabSwitch();
+
+
+
+    public <T extends BasePage> T getInstance(Class<T> tClass) {
         try {
             return tClass.getDeclaredConstructor(WebDriver.class).newInstance(this.driver);
         } catch (InstantiationException e) {
@@ -45,24 +49,6 @@ public abstract class Page {
         }
     }
 
-    public void tabSwitch(){
-        Set<String> allWindows = null;
 
-        String originalWindow = driver.getWindowHandle();
-
-        try{
-            allWindows = driver.getWindowHandles();
-
-            // Switch to the new window
-            for (String windowHandle : allWindows) {
-                if (!windowHandle.equals(originalWindow)) {
-                    driver.switchTo().window(windowHandle);
-                    break;
-                }
-            }
-        }catch (Exception e){
-            System.out.println("New Tab not found");
-        }
-    }
 
 }

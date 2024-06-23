@@ -1,5 +1,6 @@
 package com.binsight.streamstech.base;
 
+import com.binsight.streamstech.pages.LoginPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -7,6 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class BasePage extends Page {
     public BasePage(WebDriver driver) {
@@ -57,6 +59,41 @@ public class BasePage extends Page {
             System.out.println(locator.toString() + "Not found");
         }
     }
+    @Override
+    public void tabSwitch() {
+        Set<String> allWindows = null;
+
+        String originalWindow = driver.getWindowHandle();
+
+        try {
+            allWindows = driver.getWindowHandles();
+
+            // Switch to the new window
+            for (String windowHandle : allWindows) {
+                if (!windowHandle.equals(originalWindow)) {
+                    driver.switchTo().window(windowHandle);
+                    break;
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("New Tab not found");
+        }
+    }
+
+
+//    public void loginAndRedirectionToGroupManagementHomePage(){
+////        String username = null;
+////        String Password = null;
+////        loginPage.login(username, Password);
+////        ((LoginPage) this).login()
+//
+//
+//
+////        if (this instanceof LoginPage){
+//////            ((LoginPage) this).login(String username, )
+////        }
+//    }
+
 
 
 }
