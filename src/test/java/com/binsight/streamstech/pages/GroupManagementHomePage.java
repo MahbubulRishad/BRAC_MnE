@@ -29,4 +29,8 @@ public class GroupManagementHomePage extends BasePage {
         return getWebElements(By.xpath("//span[normalize-space() = 'Group Type']")).size() > 0;
     }
 
+    public boolean hasGroupTypeTittleDisplayedOnParticipantGroupTypesPage(){
+        return getWebElements(By.xpath("//div//p[normalize-space() = 'Group Type']")).size() > 0;
+    }
+
 }

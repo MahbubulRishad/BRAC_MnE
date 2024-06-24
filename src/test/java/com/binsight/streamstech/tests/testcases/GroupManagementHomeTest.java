@@ -36,6 +36,7 @@ public class GroupManagementHomeTest extends BaseTest {
                 .clickOnGroupTypeSubMenu();
 
         Assert.assertTrue(groupManagementHomePage.hasGroupTypeSubMenuHasDisplayed());
+        Assert.assertTrue(groupManagementHomePage.hasGroupTypeTittleDisplayedOnParticipantGroupTypesPage());
 
     }
 
