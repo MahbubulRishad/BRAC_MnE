@@ -1,6 +1,7 @@
 package com.binsight.streamstech.pages;
 
 import com.binsight.streamstech.base.BasePage;
+import com.binsight.streamstech.pages.groupTypePages.ParticipantGroupTypePage;
 import com.binsight.streamstech.utill.General;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -20,17 +21,11 @@ public class GroupManagementHomePage extends BasePage {
        return this;
     }
 
-    public GroupManagementHomePage clickOnGroupTypeSubMenu(){
+    public ParticipantGroupTypePage clickOnGroupTypeSubMenu(){
         getWebElement(By.xpath("//span[normalize-space() = 'Group Type']")).click();
-        return this;
+        return getInstance(ParticipantGroupTypePage.class);
     }
 
-    public boolean hasGroupTypeSubMenuHasDisplayed(){
-        return getWebElements(By.xpath("//span[normalize-space() = 'Group Type']")).size() > 0;
-    }
 
-    public boolean hasGroupTypeTittleDisplayedOnParticipantGroupTypesPage(){
-        return getWebElements(By.xpath("//div//p[normalize-space() = 'Group Type']")).size() > 0;
-    }
 
 }

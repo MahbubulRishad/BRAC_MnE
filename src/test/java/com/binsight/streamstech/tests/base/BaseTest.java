@@ -83,4 +83,8 @@ public class BaseTest {
     public String getPassword(){
         return properties.getProperty("password");
     }
+
+    public String getGroupType(){
+        return properties.getProperty("groupType");
+    }
 }
