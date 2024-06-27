@@ -23,4 +23,6 @@ public class ParticipantGroupTypePage extends BasePage {
         return getInstance(NewGroupTypeCreationSidebarPage.class);
     }
 
+
+
 }

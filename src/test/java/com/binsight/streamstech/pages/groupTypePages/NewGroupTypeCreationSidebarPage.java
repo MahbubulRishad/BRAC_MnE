@@ -10,21 +10,22 @@ public class NewGroupTypeCreationSidebarPage extends BasePage {
         super(driver);
     }
 
-    public boolean hasCancelButtonDisplayed(){
+    public boolean hasCancelButtonDisplayed() {
         return getWebElements(By.xpath("//button//span[normalize-space() = 'Cancel']")).size() > 0;
     }
 
-    public boolean hasNewGroupTypeTittleDisplayed(){
+    public boolean hasNewGroupTypeTittleDisplayed() {
         return getWebElements(By.xpath("//div[normalize-space() = 'New Group Type']")).size() > 0;
     }
 
-    public NewGroupTypeCreationSidebarPage fillGroupType(String groupTypename){
-        General.getMiniWaitTime();
-        getWebElement(By.xpath("//div//input[@id = 'mat-input-6']")).sendKeys(groupTypename);
+    public NewGroupTypeCreationSidebarPage fillGroupType(String groupTypename)  {
+        getWebElement(By.xpath("//div//input[@id = 'mat-input-1']")).sendKeys(groupTypename);
         return this;
     }
 
-    public boolean isSaveButtonActivatedAfterFillGroupTypeName(){
+    public boolean isSaveButtonActivatedAfterFillGroupTypeName() {
         return getWebElements(By.xpath("//button[@type='submit' and @class = 'mat-focus-indicator px-6 ml-3 mat-flat-button mat-button-base mat-primary']")).size() > 0;
     }
+
+
 }

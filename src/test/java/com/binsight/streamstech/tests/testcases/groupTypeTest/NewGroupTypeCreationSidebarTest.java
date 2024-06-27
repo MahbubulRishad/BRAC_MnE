@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 public class NewGroupTypeCreationSidebarTest extends BaseTest {
 
     @Test
-    public void checkingSaveButtonIsActiveAfterFillGroupTypeName(){
+    public void checkingSaveButtonIsActiveAfterFillGroupTypeName()  {
         page.getInstance(LoginPage.class)
                 .getLoginAndRedirectionToGroupManagementHomePage(getUsername(), getPassword());
 
@@ -23,4 +23,5 @@ public class NewGroupTypeCreationSidebarTest extends BaseTest {
         Assert.assertTrue(newGroupTypeCreationSidebarPage.isSaveButtonActivatedAfterFillGroupTypeName());
 
     }
+
 }
