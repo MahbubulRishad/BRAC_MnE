@@ -23,8 +23,13 @@ public class NewGroupTypeCreationSidebarPage extends BasePage {
         return this;
     }
 
-    public boolean isSaveButtonActivatedAfterFillGroupTypeName() {
+    public boolean hasSaveButtonActivatedAfterFillGroupTypeName() {
         return getWebElements(By.xpath("//button[@type='submit' and @class = 'mat-focus-indicator px-6 ml-3 mat-flat-button mat-button-base mat-primary']")).size() > 0;
+    }
+
+    public ParticipantGroupTypePage clickOnSaveButtonForGroupType(){
+        getWebElement(By.xpath("//button[@type='submit' and @class = 'mat-focus-indicator px-6 ml-3 mat-flat-button mat-button-base mat-primary']")).click();
+        return getInstance(ParticipantGroupTypePage.class);
     }
 
 
