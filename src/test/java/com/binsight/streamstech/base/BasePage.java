@@ -1,16 +1,21 @@
 package com.binsight.streamstech.base;
 
 import com.binsight.streamstech.pages.LoginPage;
+import com.binsight.streamstech.utill.General;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
 public class BasePage extends Page {
+
     public BasePage(WebDriver driver) {
         super(driver);
     }
@@ -21,7 +26,7 @@ public class BasePage extends Page {
     }
 
     @Override
-    public String getCurrentUrl(){
+    public String getCurrentUrl() {
         return driver.getCurrentUrl();
     }
 
@@ -59,6 +64,7 @@ public class BasePage extends Page {
             System.out.println(locator.toString() + "Not found");
         }
     }
+
     @Override
     public void tabSwitch() {
         Set<String> allWindows = null;
@@ -80,20 +86,37 @@ public class BasePage extends Page {
         }
     }
 
-
-//    public void loginAndRedirectionToGroupManagementHomePage(){
-////        String username = null;
-////        String Password = null;
-////        loginPage.login(username, Password);
-////        ((LoginPage) this).login()
+//    public void acceptAlert() {
+//        try {
+//            wait = new WebDriverWait(driver, Duration.ofSeconds(General.WAIT_TIME));
+//            if (wait.until(ExpectedConditions.alertIsPresent()) == null) {
+//                System.out.println("Alert is not displayed");
+//            } else {
+//                driver.switchTo().alert().accept();
+//            }
 //
-//
-//
-////        if (this instanceof LoginPage){
-//////            ((LoginPage) this).login(String username, )
-////        }
+//        } catch (Exception e) {
+//            System.out.println("Alert Not found");
+//        }
 //    }
 
+    public void acceptAlert() {
+        Set<String> window = driver.getWindowHandles();
+
+        if (window.size() > 1){
+            driver.switchTo().window("Name");
+
+            try{
+                WebElement yesElOnPopup = getWebElement(By.xpath("//button//span[@class = 'mat-button-wrapper'][normalize-space() = 'Yes']"));
+
+                if (yesElOnPopup.isDisplayed()){
+                    yesElOnPopup.click();
+                }
+            }catch (Exception e){
+                System.out.println("Alert not found");
+            }
+        }
+    }
 
 
 }

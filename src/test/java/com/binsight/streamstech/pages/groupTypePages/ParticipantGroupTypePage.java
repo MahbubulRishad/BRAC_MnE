@@ -1,12 +1,13 @@
 package com.binsight.streamstech.pages.groupTypePages;
 
 import com.binsight.streamstech.base.BasePage;
-import com.binsight.streamstech.utill.General;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class ParticipantGroupTypePage extends BasePage {
+
     public ParticipantGroupTypePage(WebDriver driver) {
         super(driver);
     }
@@ -26,6 +27,29 @@ public class ParticipantGroupTypePage extends BasePage {
 
     public boolean hasSavedSuccessfulToastMessageAppeared(){
         return getWebElements(By.xpath("//div//div[normalize-space() = 'Saved Successfully']")).size() > 0;
+    }
+
+
+    public void clickOnDeleteIconOfFirstItem(){
+        getWebElement(By.xpath("(//mat-icon[@role = 'img'][normalize-space() = 'delete'])[1]")).click();
+    }
+
+    public void getAcceptAlert(){
+        acceptAlert();
+    }
+
+//    public void clickOnYesButtonOfAlertMessage(){
+//        Alert alert = driver.switchTo().alert();
+//        alert.accept();
+//    }
+
+    public void clickOnCancelButtonOfAlertMessage(){
+        Alert alert = driver.switchTo().alert();
+        alert.dismiss();
+    }
+
+    public boolean hasGroupTypeLinkedWithProjectGroupTypeErrorMessageDisplayed(){
+        return getWebElements(By.xpath("//div[@class='fuse-alert-message ng-tns-c183-16'][normalize-space() = 'This ParticipantGroupType cannot be deleted because it is linked with project_group_type_setting']")).size() > 0;
     }
 
 //    public boolean isSavedSuccessfulToastMessageAppeared2(){

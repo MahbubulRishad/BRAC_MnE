@@ -24,10 +24,20 @@ public class ParticipantGroupTypeTest extends BaseTest {
         Assert.assertTrue(newGroupTypeCreationSidebarPage.hasNewGroupTypeTittleDisplayed());
     }
 
+    @Test
+    public void verifyGroupTypeWillNotDeleteIfReferenceHasBeenUsed() {
+        page.getInstance(LoginPage.class)
+                .getLoginAndRedirectionToGroupManagementHomePage(getUsername(), getPassword());
 
+        page.getInstance(GroupManagementHomePage.class)
+                .clickOnGroupTypesMainMenu()
+                .clickOnGroupTypeSubMenu()
+                .clickOnDeleteIconOfFirstItem();
+        page.getInstance(ParticipantGroupTypePage.class)
+                        .getAcceptAlert();
 
-
-
+        Assert.assertTrue(page.getInstance(ParticipantGroupTypePage.class).hasGroupTypeLinkedWithProjectGroupTypeErrorMessageDisplayed());
+    }
 
 
 }

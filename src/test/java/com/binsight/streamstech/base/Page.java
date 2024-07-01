@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Set;
 
 public abstract class Page {
-   protected WebDriver driver;
+    protected WebDriver driver;
     WebDriverWait wait;
 
     public Page(WebDriver driver) {
