@@ -100,23 +100,27 @@ public class BasePage extends Page {
 //        }
 //    }
 
-    public void acceptAlert() {
-        Set<String> window = driver.getWindowHandles();
 
-        if (window.size() > 1){
-            driver.switchTo().window("Name");
 
-            try{
-                WebElement yesElOnPopup = getWebElement(By.xpath("//button//span[@class = 'mat-button-wrapper'][normalize-space() = 'Yes']"));
-
-                if (yesElOnPopup.isDisplayed()){
-                    yesElOnPopup.click();
-                }
-            }catch (Exception e){
-                System.out.println("Alert not found");
-            }
-        }
-    }
+//    public void acceptAlert(){
+//
+//        Set<String> allPopupWindows = driver.getWindowHandles();
+//
+//        String originalWindow = driver.getWindowHandle();
+//
+//
+//
+//        for (String popup : allPopupWindows){
+//            if (!popup.equals(originalWindow)){
+//                driver.switchTo().window(popup);
+//                WebElement yesElOnPopup = getWebElement(By.xpath("//button//span[@class = 'mat-button-wrapper'][normalize-space() = 'Yes']"));
+//                if (yesElOnPopup.isDisplayed()){
+//                    yesElOnPopup.click();
+//                }
+//            }
+//        }
+////        driver.switchTo().window(originalWindow);
+//    }
 
 
 }

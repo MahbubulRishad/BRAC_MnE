@@ -34,9 +34,11 @@ public class ParticipantGroupTypeTest extends BaseTest {
                 .clickOnGroupTypeSubMenu()
                 .clickOnDeleteIconOfFirstItem();
         page.getInstance(ParticipantGroupTypePage.class)
-                        .getAcceptAlert();
+                .acceptAlert();
 
-        Assert.assertTrue(page.getInstance(ParticipantGroupTypePage.class).hasGroupTypeLinkedWithProjectGroupTypeErrorMessageDisplayed());
+       ParticipantGroupTypePage participantGroupTypePage = page.getInstance(ParticipantGroupTypePage.class);
+
+       Assert.assertTrue(participantGroupTypePage.hasGroupTypeLinkedWithProjectGroupTypeErrorMessageDisplayed());
     }
 
 

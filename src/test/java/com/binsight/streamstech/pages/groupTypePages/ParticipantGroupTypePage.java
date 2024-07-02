@@ -1,10 +1,12 @@
 package com.binsight.streamstech.pages.groupTypePages;
 
 import com.binsight.streamstech.base.BasePage;
-import org.openqa.selenium.Alert;
+import com.binsight.streamstech.utill.General;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
+import java.util.Set;
 
 public class ParticipantGroupTypePage extends BasePage {
 
@@ -34,8 +36,25 @@ public class ParticipantGroupTypePage extends BasePage {
         getWebElement(By.xpath("(//mat-icon[@role = 'img'][normalize-space() = 'delete'])[1]")).click();
     }
 
-    public void getAcceptAlert(){
-        acceptAlert();
+    public void acceptAlert() {
+        Set<String> allPopups = driver.getWindowHandles();
+        String popupWindow = driver.getWindowHandle();
+        String originalWindow = driver.getWindowHandle();
+
+        if (allPopups.size() > 1){
+            driver.switchTo().window(popupWindow);
+
+            try{
+                WebElement yesElOnPopup = getWebElement(By.xpath("//button//span[@class = 'mat-button-wrapper'][normalize-space() = 'Yes']"));
+
+                if (yesElOnPopup.isDisplayed()){
+                    yesElOnPopup.click();
+                }
+//                driver.switchTo().window(originalWindow);
+            }catch (Exception e){
+                System.out.println("Alert not found");
+            }
+        }
     }
 
 //    public void clickOnYesButtonOfAlertMessage(){
@@ -43,12 +62,13 @@ public class ParticipantGroupTypePage extends BasePage {
 //        alert.accept();
 //    }
 
-    public void clickOnCancelButtonOfAlertMessage(){
-        Alert alert = driver.switchTo().alert();
-        alert.dismiss();
-    }
+//    public void clickOnCancelButtonOfAlertMessage(){
+//        Alert alert = driver.switchTo().alert();
+//        alert.dismiss();
+//    }
 
     public boolean hasGroupTypeLinkedWithProjectGroupTypeErrorMessageDisplayed(){
+        General.getLinkLoadTime();
         return getWebElements(By.xpath("//div[@class='fuse-alert-message ng-tns-c183-16'][normalize-space() = 'This ParticipantGroupType cannot be deleted because it is linked with project_group_type_setting']")).size() > 0;
     }
 
