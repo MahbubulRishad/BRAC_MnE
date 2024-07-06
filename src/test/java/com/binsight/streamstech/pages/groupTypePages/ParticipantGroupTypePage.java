@@ -6,8 +6,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import java.util.Set;
-
 public class ParticipantGroupTypePage extends BasePage {
 
     public ParticipantGroupTypePage(WebDriver driver) {
@@ -60,7 +58,7 @@ public class ParticipantGroupTypePage extends BasePage {
 
     public void clickOnYesBtnOnAlert(){
         WebElement clickYesBtnOnAlert = getWebElement(By.xpath("//button//span[@class = 'mat-button-wrapper'][normalize-space() = 'Yes']"));
-        acceptAlert(clickYesBtnOnAlert);
+        AlertButton(clickYesBtnOnAlert);
     }
 
 
