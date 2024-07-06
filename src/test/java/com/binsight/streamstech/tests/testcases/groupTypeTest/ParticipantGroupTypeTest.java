@@ -33,7 +33,7 @@ public class ParticipantGroupTypeTest extends BaseTest {
                 .clickOnGroupTypesMainMenu()
                 .clickOnGroupTypeSubMenu()
                 .clickOnDeleteIconOfFirstItem()
-                .acceptAlert();
+                .clickOnYesBtnOnAlert();
 
         Assert.assertTrue(page.getInstance(ParticipantGroupTypePage.class).hasGroupTypeLinkedWithProjectGroupTypeErrorToastMessageDisplayed());
     }

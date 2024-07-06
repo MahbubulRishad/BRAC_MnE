@@ -101,7 +101,6 @@ public class BasePage extends Page {
 //    }
 
 
-
 //    public void acceptAlert(){
 //
 //        Set<String> allPopupWindows = driver.getWindowHandles();
@@ -121,6 +120,28 @@ public class BasePage extends Page {
 //        }
 ////        driver.switchTo().window(originalWindow);
 //    }
+
+    public void acceptAlert(WebElement locator) {
+        Set<String> allPopups = driver.getWindowHandles();
+        String popupWindow = driver.getWindowHandle();
+//        String originalWindow = driver.getWindowHandle();
+
+        if (allPopups.size() > 1) {
+            driver.switchTo().window(popupWindow);
+
+            try {
+                WebElement yesElOnPopup = locator;
+//                yesElOnPopup = getWebElement();
+
+                if (yesElOnPopup.isDisplayed()) {
+                    yesElOnPopup.click();
+                }
+//                driver.switchTo().window(originalWindow);
+            } catch (Exception e) {
+                System.out.println("Alert not found");
+            }
+        }
+    }
 
 
 }

@@ -37,26 +37,41 @@ public class ParticipantGroupTypePage extends BasePage {
         return this;
     }
 
-    public void acceptAlert() {
-        Set<String> allPopups = driver.getWindowHandles();
-        String popupWindow = driver.getWindowHandle();
-        String originalWindow = driver.getWindowHandle();
+//    public void acceptAlert() {
+//        Set<String> allPopups = driver.getWindowHandles();
+//        String popupWindow = driver.getWindowHandle();
+//        String originalWindow = driver.getWindowHandle();
+//
+//        if (allPopups.size() > 1){
+//            driver.switchTo().window(popupWindow);
+//
+//            try{
+//                WebElement yesElOnPopup = getWebElement(By.xpath("//button//span[@class = 'mat-button-wrapper'][normalize-space() = 'Yes']"));
+//
+//                if (yesElOnPopup.isDisplayed()){
+//                    yesElOnPopup.click();
+//                }
+////                driver.switchTo().window(originalWindow);
+//            }catch (Exception e){
+//                System.out.println("Alert not found");
+//            }
+//        }
+//    }
 
-        if (allPopups.size() > 1){
-            driver.switchTo().window(popupWindow);
-
-            try{
-                WebElement yesElOnPopup = getWebElement(By.xpath("//button//span[@class = 'mat-button-wrapper'][normalize-space() = 'Yes']"));
-
-                if (yesElOnPopup.isDisplayed()){
-                    yesElOnPopup.click();
-                }
-//                driver.switchTo().window(originalWindow);
-            }catch (Exception e){
-                System.out.println("Alert not found");
-            }
-        }
+    public void clickOnYesBtnOnAlert(){
+        WebElement clickYesBtnOnAlert = getWebElement(By.xpath("//button//span[@class = 'mat-button-wrapper'][normalize-space() = 'Yes']"));
+        acceptAlert(clickYesBtnOnAlert);
     }
+
+
+
+
+
+
+
+
+
+
 
 //    public void clickOnYesButtonOfAlertMessage(){
 //        Alert alert = driver.switchTo().alert();
