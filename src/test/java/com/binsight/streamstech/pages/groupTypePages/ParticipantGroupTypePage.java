@@ -32,8 +32,9 @@ public class ParticipantGroupTypePage extends BasePage {
     }
 
 
-    public void clickOnDeleteIconOfFirstItem(){
+    public ParticipantGroupTypePage clickOnDeleteIconOfFirstItem(){
         getWebElement(By.xpath("(//mat-icon[@role = 'img'][normalize-space() = 'delete'])[1]")).click();
+        return this;
     }
 
     public void acceptAlert() {
@@ -67,9 +68,9 @@ public class ParticipantGroupTypePage extends BasePage {
 //        alert.dismiss();
 //    }
 
-    public boolean hasGroupTypeLinkedWithProjectGroupTypeErrorMessageDisplayed(){
+    public boolean hasGroupTypeLinkedWithProjectGroupTypeErrorToastMessageDisplayed(){
         General.getLinkLoadTime();
-        return getWebElements(By.xpath("//div[@class='fuse-alert-message ng-tns-c183-16'][normalize-space() = 'This ParticipantGroupType cannot be deleted because it is linked with project_group_type_setting']")).size() > 0;
+        return getWebElements(By.xpath("//div[normalize-space() = 'This ParticipantGroupType cannot be deleted because it is linked with project_group_type_setting']")).size() > 0;
     }
 
 //    public boolean isSavedSuccessfulToastMessageAppeared2(){
