@@ -67,6 +67,17 @@ public class ParticipantGroupTypePage extends BasePage {
         AlertButton(clickNoBtnOnAlert);
     }
 
+    public ParticipantGroupTypePage clickOnSearchIcon(){
+        getWebElement(By.xpath("//span//mat-icon[@role = 'img'][normalize-space() = 'search']")).click();
+        General.getMiniWaitTime();
+        return this;
+    }
+
+    public ParticipantGroupTypePage fillValueOnSearchBox(String groupType){
+        getWebElement(By.xpath("//input[@autocomplete = 'off' and @aria-invalid='false']")).sendKeys(groupType);
+        return this;
+    }
+
 
 
 
