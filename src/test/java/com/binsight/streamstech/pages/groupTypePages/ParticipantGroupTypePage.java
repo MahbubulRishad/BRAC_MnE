@@ -62,6 +62,12 @@ public class ParticipantGroupTypePage extends BasePage {
     }
 
 
+    public void clickOnNoBtnOnAlert(){
+        WebElement clickNoBtnOnAlert = getWebElement(By.xpath("//span[normalize-space() = 'No' ]"));
+        AlertButton(clickNoBtnOnAlert);
+    }
+
+
 
 
 

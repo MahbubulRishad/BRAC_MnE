@@ -124,11 +124,11 @@ public class BasePage extends Page {
             driver.switchTo().window(popupWindow);
 
             try {
-                WebElement yesElOnPopup = locator;
+                WebElement ElOnPopup = locator;
 //                yesElOnPopup = getWebElement();
 
-                if (yesElOnPopup.isDisplayed()) {
-                    yesElOnPopup.click();
+                if (ElOnPopup.isDisplayed()) {
+                    ElOnPopup.click();
                 }
 //                driver.switchTo().window(originalWindow);
             } catch (Exception e) {

@@ -39,4 +39,19 @@ public class ParticipantGroupTypeTest extends BaseTest {
     }
 
 
+    @Test
+    public void verifyAfterClickingOnNoButtonOnAlertItReturnsGroupTypeList() {
+        page.getInstance(LoginPage.class)
+                .getLoginAndRedirectionToGroupManagementHomePage(getUsername(), getPassword());
+
+        page.getInstance(GroupManagementHomePage.class)
+                .clickOnGroupTypesMainMenu()
+                .clickOnGroupTypeSubMenu()
+                .clickOnDeleteIconOfFirstItem()
+                .clickOnNoBtnOnAlert();
+
+        Assert.assertTrue(page.getInstance(ParticipantGroupTypePage.class).hasGroupTypeTittleDisplayedOnParticipantGroupTypesPage());
+    }
+
+
 }
