@@ -1,10 +1,13 @@
 package com.binsight.streamstech.pages.groupTypePages;
 
 import com.binsight.streamstech.base.BasePage;
+import com.binsight.streamstech.base.Page;
 import com.binsight.streamstech.utill.General;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
+import java.util.List;
 
 public class ParticipantGroupTypePage extends BasePage {
 
@@ -12,25 +15,25 @@ public class ParticipantGroupTypePage extends BasePage {
         super(driver);
     }
 
-    public boolean hasGroupTypeSubMenuHasDisplayed(){
+    public boolean hasGroupTypeSubMenuHasDisplayed() {
         return getWebElements(By.xpath("//span[normalize-space() = 'Group Type']")).size() > 0;
     }
 
-    public boolean hasGroupTypeTittleDisplayedOnParticipantGroupTypesPage(){
+    public boolean hasGroupTypeTittleDisplayedOnParticipantGroupTypesPage() {
         return getWebElements(By.xpath("//div//p[normalize-space() = 'Group Type']")).size() > 0;
     }
 
-    public NewGroupTypeCreationSidebarPage clickOnGroupTypePlusIcon(){
+    public NewGroupTypeCreationSidebarPage clickOnGroupTypePlusIcon() {
         getWebElement(By.xpath("//button//span//mat-icon[normalize-space() = 'add']")).click();
         return getInstance(NewGroupTypeCreationSidebarPage.class);
     }
 
-    public boolean hasSavedSuccessfulToastMessageAppeared(){
+    public boolean hasSavedSuccessfulToastMessageAppeared() {
         return getWebElements(By.xpath("//div//div[normalize-space() = 'Saved Successfully']")).size() > 0;
     }
 
 
-    public ParticipantGroupTypePage clickOnDeleteIconOfFirstItem(){
+    public ParticipantGroupTypePage clickOnDeleteIconOfFirstItem() {
         getWebElement(By.xpath("(//mat-icon[@role = 'img'][normalize-space() = 'delete'])[1]")).click();
         return this;
     }
@@ -56,36 +59,38 @@ public class ParticipantGroupTypePage extends BasePage {
 //        }
 //    }
 
-    public void clickOnYesBtnOnAlert(){
+    public void clickOnYesBtnOnAlert() {
         WebElement clickYesBtnOnAlert = getWebElement(By.xpath("//button//span[@class = 'mat-button-wrapper'][normalize-space() = 'Yes']"));
         AlertButton(clickYesBtnOnAlert);
     }
 
 
-    public void clickOnNoBtnOnAlert(){
+    public void clickOnNoBtnOnAlert() {
         WebElement clickNoBtnOnAlert = getWebElement(By.xpath("//span[normalize-space() = 'No' ]"));
         AlertButton(clickNoBtnOnAlert);
     }
 
-    public ParticipantGroupTypePage clickOnSearchIcon(){
+    public ParticipantGroupTypePage clickOnSearchIcon() {
         getWebElement(By.xpath("//span//mat-icon[@role = 'img'][normalize-space() = 'search']")).click();
         General.getMiniWaitTime();
         return this;
     }
 
-    public ParticipantGroupTypePage fillValueOnSearchBox(String groupType){
+    public ParticipantGroupTypePage fillValueOnSearchBox(String groupType) {
         getWebElement(By.xpath("//input[@autocomplete = 'off' and @aria-invalid='false']")).sendKeys(groupType);
         return this;
     }
 
+    public boolean hasSearchedGroupTypeListDisplayed(String groupType) {
+        List<WebElement> listOfGroupType = getWebElements(By.xpath("//td//span[@class = 'ellipsis ng-star-inserted']"));
 
-
-
-
-
-
-
-
+        for (WebElement searchGroupType : listOfGroupType) {
+            if (searchGroupType.getText().trim().equals(groupType)) {
+                break;
+            }
+        }
+        return listOfGroupType.size() > 0;
+    }
 
 
 //    public void clickOnYesButtonOfAlertMessage(){
@@ -98,7 +103,7 @@ public class ParticipantGroupTypePage extends BasePage {
 //        alert.dismiss();
 //    }
 
-    public boolean hasGroupTypeLinkedWithProjectGroupTypeErrorToastMessageDisplayed(){
+    public boolean hasGroupTypeLinkedWithProjectGroupTypeErrorToastMessageDisplayed() {
         General.getLinkLoadTime();
         return getWebElements(By.xpath("//div[normalize-space() = 'This ParticipantGroupType cannot be deleted because it is linked with project_group_type_setting']")).size() > 0;
     }
@@ -120,7 +125,6 @@ public class ParticipantGroupTypePage extends BasePage {
 //            return false;
 //        }
 //    }
-
 
 
 }

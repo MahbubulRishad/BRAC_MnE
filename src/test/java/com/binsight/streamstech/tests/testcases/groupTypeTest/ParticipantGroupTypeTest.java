@@ -53,5 +53,19 @@ public class ParticipantGroupTypeTest extends BaseTest {
         Assert.assertTrue(page.getInstance(ParticipantGroupTypePage.class).hasGroupTypeTittleDisplayedOnParticipantGroupTypesPage());
     }
 
+    @Test
+    public void verifySearchingCreatedGroupType() {
+        page.getInstance(LoginPage.class)
+                .getLoginAndRedirectionToGroupManagementHomePage(getUsername(), getPassword());
+
+        ParticipantGroupTypePage participantGroupTypePage = page.getInstance(GroupManagementHomePage.class)
+                .clickOnGroupTypesMainMenu()
+                .clickOnGroupTypeSubMenu()
+                .clickOnSearchIcon()
+                .fillValueOnSearchBox(getGroupType());
+
+        Assert.assertTrue(participantGroupTypePage.hasSearchedGroupTypeListDisplayed(getGroupType()));
+    }
+
 
 }
