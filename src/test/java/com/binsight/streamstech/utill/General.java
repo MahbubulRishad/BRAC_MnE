@@ -9,7 +9,7 @@ public class General {
 
     public static final int  WAIT_TIME = 50;
 
-    public static final String GROUP_MANAGEMENT_HOME_PAGE = "https://binsight.streamstech.com/group/Group";
+    public static final String GROUP_MANAGEMENT_HOME_PAGE = "http://18.141.54.198:8056/group/Group";
 
     public static void getLinkLoadTime(){
         try {

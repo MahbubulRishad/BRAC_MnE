@@ -1,5 +1,6 @@
 package com.binsight.streamstech.base;
 
+import com.binsight.streamstech.utill.General;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
